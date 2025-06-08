@@ -1,0 +1,311 @@
+/* Estilos para la tabla de rutas */
+.tabla-rutas-container {
+    margin: 2rem 0;
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#tabla-rutas {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+#tabla-rutas th, #tabla-rutas td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#tabla-rutas th {
+    background-color: #b31c1c;
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+#tabla-rutas tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#tabla-rutas tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-comprar {
+    background-color: #b31c1c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.85rem;
+}
+
+.btn-comprar:hover {
+    background-color: #8e1616;
+    transform: translateY(-2px);
+}
+
+.error, .no-rutas {
+    padding: 2rem;
+    text-align: center;
+    color: #d9534f;
+    background: #f8d7da;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.error button, .no-rutas button {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+/* Estilos para el filtro */
+.filtro-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filtro-container label {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.filtro-container select {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.btn-filtrar {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-filtrar:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para los modales */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-contenido {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalAparecer 0.3s;
+}
+
+@keyframes modalAparecer {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.cerrar-modal {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.cerrar-modal:hover {
+    color: #333;
+}
+
+/* Formulario de pago */
+#formulario-pago {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.grupo-formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-formulario label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.grupo-formulario input {
+    padding: 0.8rem;
+    border: 1px solid #ff3434;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.grupo-fechas-cvv {
+    display: flex;
+    gap: 1rem;
+}
+
+.grupo-fechas-cvv .grupo-formulario {
+    flex: 1;
+}
+
+.btn-pagar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-pagar:hover {
+    background-color: #218838;
+}
+
+/* Estilos para el ticket */
+.modal-contenido.ticket {
+    max-width: 600px;
+}
+
+#contenido-ticket {
+    background: rgb(255, 255, 255);
+    border: 1px solid #140a0a;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.ticket-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px dashed #333;
+    padding-bottom: 1rem;
+}
+
+.ticket-header h3 {
+    margin: 0;
+    color: #b31c1c;
+    font-size: 1.5rem;
+}
+
+.ticket-header p {
+    margin: 0.5rem 0 0;
+    color: #666;
+}
+
+.ticket-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.ticket-info div {
+    margin-bottom: 0.5rem;
+}
+
+.ticket-info strong {
+    display: block;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.ticket-asientos {
+    background: #9b0c02;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.ticket-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    border-top: 2px dashed #333;
+    padding-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.btn-descargar, .btn-cerrar {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s;
+}
+
+.btn-descargar {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-descargar:hover {
+    background-color: #138496;
+}
+
+.btn-cerrar {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-cerrar:hover {
+    background-color: #5a6268;
+}
+
+
+input:invalid {
+    border-color: #dc3545;
+}
+
+input:valid {
+    border-color: #28a745;
+}

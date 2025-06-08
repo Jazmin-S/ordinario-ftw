@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutas y Horarios - BusTickets Xalapa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="rutas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <header class="hero" role="banner">
+        <div class="overlay">
+            <h1>Rutas y Horarios desde Xalapa</h1>
+            <nav role="navigation" aria-label="Menú principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="rutas.html">Rutas y Horarios</a></li>
+                    <li><a href="contacto.html">Contacto </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main">
+        <section class="rutas-container">
+            <h2>Rutas y Horarios desde Xalapa</h2>
+            
+            <form id="filtro-rutas" role="search" aria-label="Filtrar rutas">
+                <div class="filtro-container">
+                    <label for="destino">Filtrar por destino:</label>
+                    <select id="destino" name="destino">
+                        <option value="todos">Todos los destinos</option>
+                        <option value="veracruz">Veracruz</option>
+                        <option value="puebla">Puebla</option>
+                        <option value="Ciudad de México">Ciudad de México</option>
+                        <option value="oaxaca">Oaxaca</option>
+                        <option value="Cancún">Cancún</option>
+                        <option value="monterrey">Monterrey</option>
+                    </select>
+                    <button type="submit" class="btn-filtrar">
+                        <i class="fas fa-filter"></i> Filtrar
+                    </button>
+                </div>
+            </form>
+
+            <div class="tabla-rutas-container">
+                <table id="tabla-rutas" aria-label="Horarios de autobuses">
+                    <thead>
+                        <tr>
+                            <th scope="col">Destino <i class="fas fa-map-marker-alt"></i></th>
+                            <th scope="col">Salida <i class="fas fa-clock"></i></th>
+                            <th scope="col">Llegada <i class="fas fa-flag-checkered"></i></th>
+                            <th scope="col">Duración <i class="fas fa-hourglass-half"></i></th>
+                            <th scope="col">Precio <i class="fas fa-tag"></i></th>
+                            <th scope="col">Tipo <i class="fas fa-bus"></i></th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla">
+                        <!-- Las rutas se generarán con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="contenedor-footer">
+            <div class="info-empresa">
+                <p>&copy; 2025 BusTickets Xalapa. Todos los derechos reservados.</p>
+                <div class="contactos">
+                    <address>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contacto@busticketsxalapa.com">contacto@busticketsxalapa.com</a>
+                    </address>
+                    <address>
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+522292015490">229 201 5490</a>
+                    </address>
+                    <address>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Av. Enrique C. Rébsamen 125, Centro, Xalapa</span>
+                    </address>
+                </div>
+            </div>
+
+            <div class="redes-sociales">
+                <h4>Síguenos</h4>
+                <div class="iconos-redes">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-pago" class="modal">
+            <div class="modal-contenido">
+                <span class="cerrar-modal">&times;</span>
+                <h2>Pago de Boleto</h2>
+                <form id="formulario-pago">
+                    <div class="grupo-formulario">
+                        <label for="cantidad-asientos">Cantidad de Asientos</label>
+                        <select id="cantidad-asientos" required>
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1">1 Asiento</option>
+                            <option value="2">2 Asientos</option>
+                            <option value="3">3 Asientos</option>
+                            <option value="4">4 Asientos</option>
+                        </select>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="nombre-tarjeta">Nombre en la Tarjeta</label>
+                        <input type="text" id="nombre-tarjeta" required>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="numero-tarjeta">Número de Tarjeta</label>
+                        <input type="text" id="numero-tarjeta" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="grupo-fechas-cvv">
+                        <div class="grupo-formulario">
+                            <label for="fecha-expiracion">Fecha de Expiración (MM/AA)</label>
+                            <input type="text" id="fecha-expiracion" placeholder="MM/AA" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="email-pago">Correo Electrónico</label>
+                        <input type="email" id="email-pago" required>
+                    </div>
+                    <button type="submit" class="btn-pagar">Realizar Pago</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="modal-ticket" class="modal">
+            <div class="modal-contenido ticket">
+                <span class="cerrar-modal">&times;</span>
+                <h2>Ticket de Compra</h2>
+                <div id="contenido-ticket"></div>
+                <div class="botones-ticket">
+                    <button id="btn-descargar-ticket" class="btn-descargar">
+                        <i class="fas fa-download"></i> Descargar Ticket
+                    </button>
+                    <button id="btn-cerrar-ticket" class="btn-cerrar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="comun.js"></script>
+    <script src="rutas.js"></script>
+</body>
+</html>
