@@ -1,123 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - BusTickets Xalapa</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="contacto.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto - BusTickets Xalapa</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="contacto.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-    <header role="banner">
-        <div class="hero">
-            <div class="overlay">
-                <h1>Contacto a BusTickets Xalapa</h1>
-                <nav class="navegacion-principal" role="navigation" aria-label="Menú principal">
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="rutas.html">Rutas y Horarios</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </nav>
-            </div>
+  <header role="banner">
+    <div class="hero">
+      <div class="overlay">
+        <h1>Contacto</h1>
+        <nav class="navegacion-principal" role="navigation" aria-label="Menú principal">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="rutas.html">Rutas y Horarios</a></li>
+            <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main role="main" class="main">
+    <section aria-labelledby="contacto" class="seccion-contacto">
+      <h2 id="contacto" class="titulo-seccion">Contacto</h2>
+      <p class="descripcion-contacto">¿Necesitas ayuda o quieres hacer una reservación? Contáctanos a través del siguiente formulario.</p>
+
+      <!-- Región ARIA-LIVE para mensajes -->
+      <div id="mensaje-formulario" class="mensaje-formulario" aria-live="polite" role="status" tabindex="-1"></div>
+
+      <form id="formulario-contacto" class="formulario-contacto" aria-labelledby="contacto-form">
+        <h3 id="contacto-form" class="subtitulo-formulario">Formulario de contacto</h3>
+
+        <div class="grupo-formulario">
+          <label for="nombre">Nombre completo:</label>
+          <input type="text" id="nombre" name="nombre" required aria-required="true" placeholder="Ingresa tu nombre completo" />
         </div>
-    </header>
 
-    <main role="main" class="main">
-        <section aria-labelledby="contacto" class="seccion-contacto">
-            <h2 id="contacto" class="titulo-seccion">Contacto </h2>
-            <p class="descripcion-contacto">¿Necesitas ayuda o quieres hacer una reservación? Contáctanos:</p>
-            
-            <form id="formulario-contacto" class="formulario-contacto" aria-labelledby="contacto-form">
-                <h3 id="contacto-form" class="subtitulo-formulario">Formulario de contacto</h3>
-                <div class="grupo-formulario">
-                    <label for="nombre">Nombre completo:</label>
-                    <input type="text" id="nombre" name="nombre" required aria-required="true" placeholder="Ingresa tu nombre completo">
-                </div>
-                <div class="grupo-formulario">
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" name="email" required aria-required="true" placeholder="Ingresa tu correo electrónico">
-                </div>
-                <div class="grupo-formulario">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Ingresa tu número telefónico">
-                </div>
-                <div class="grupo-formulario">
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true" placeholder="Escribe tu mensaje aquí"></textarea>
-                </div>
-                <fieldset class="grupo-preferencia">
-                    <legend>Preferencia de contacto:</legend>
-                    <div class="opciones-preferencia">
-                        <div class="opcion-preferencia">
-                            <input type="radio" id="contacto-email" name="preferencia" value="email" checked>
-                            <label for="contacto-email">Correo electrónico</label>
-                        </div>
-                        <div class="opcion-preferencia">
-                            <input type="radio" id="contacto-telefono" name="preferencia" value="telefono">
-                            <label for="contacto-telefono">Llamada telefónica</label>
-                        </div>
-                    </div>
-                </fieldset>
-                <button type="submit" class="btn btn--primario btn-enviar">Enviar mensaje</button>
-            </form>
-        </section>
-
-        <section aria-labelledby="ubicacion" class="seccion-ubicacion">
-            <h3 id="ubicacion" class="subtitulo-ubicacion">Ubicación</h3>
-            <p class="direccion">Av. Enrique C. Rébsamen 123, Centro, Xalapa, Veracruz</p>
-            <div class="contenedor-mapa">
-                <a href="https://www.google.com/maps/place/Av.+Enrique+C.+R%C3%A9bsamen+123,+Centro,+91000+Xalapa-Enr%C3%ADquez,+Ver./@19.5323622,-96.9257393,17z" 
-                   target="_blank" 
-                   class="enlace-mapa">
-                    Ver ubicacion en Google Maps
-                </a>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.09764378963!2d-96.9257393!3d19.5323622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db2ec5d2d7f8a5%3A0x9a3f5b1a3c4d9b1f!2sAv.%20Enrique%20C.%20R%C3%A9bsamen%20123%2C%20Centro%2C%2091000%20Xalapa-Enr%C3%ADquez%2C%20Ver.!5e0!3m2!1ses-419!2smx!4v1718300000000!5m2!1ses-419!2smx" 
-                        width="600" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        class="mapa-embed"></iframe>
-            </div>
-        </section>
-    </main>
-
-    <footer role="contentinfo">
-        <div class="contenedor-footer">
-            <div class="info-empresa">
-                <p>&copy; 2025 BusTickets Xalapa. Todos los derechos reservados.</p>
-                <div class="contactos">
-                    <address>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:contacto@busticketsxalapa.com">contacto@busticketsxalapa.com</a>
-                    </address>
-                    <address>
-                        <i class="fas fa-phone-alt"></i>
-                        <a href="tel:+522292015490">229 201 5490</a>
-                    </address>
-                    <address>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Av. Enrique C. Rébsamen 125, Centro, Xalapa</span>
-                    </address>
-                </div>
-            </div>
-
-            <div class="redes-sociales">
-                <h4>Síguenos</h4>
-                <div class="iconos-redes">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
+        <div class="grupo-formulario">
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" required aria-required="true" placeholder="Ingresa tu correo electrónico" />
         </div>
-    </footer>
 
-    <script src="comun.js"></script>
-    <script src="contacto.js"></script>
+        <div class="grupo-formulario">
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ingresa tu número telefónico" />
+        </div>
+
+        <div class="grupo-formulario">
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true" placeholder="Escribe tu mensaje aquí"></textarea>
+        </div>
+
+        <fieldset class="grupo-preferencia">
+          <legend>Preferencia de contacto:</legend>
+          <div class="opciones-preferencia">
+            <div class="opcion-preferencia">
+              <input type="radio" id="contacto-email" name="preferencia" value="email" checked />
+              <label for="contacto-email">Correo electrónico</label>
+            </div>
+            <div class="opcion-preferencia">
+              <input type="radio" id="contacto-telefono" name="preferencia" value="telefono" />
+              <label for="contacto-telefono">Llamada telefónica</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn--primario btn-enviar" aria-label="Enviar el formulario de contacto">Enviar mensaje</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="ubicacion" class="seccion-ubicacion">
+      <h3 id="ubicacion" class="subtitulo-ubicacion">Ubicación</h3>
+      <p class="direccion">Av. Enrique C. Rébsamen 123, Centro, Xalapa, Veracruz</p>
+      <div class="contenedor-mapa">
+        <a href="https://www.google.com/maps/place/Av.+Enrique+C.+R%C3%A9bsamen+123,+Centro,+91000+Xalapa-Enr%C3%ADquez,+Ver./@19.5323622,-96.9257393,17z" 
+           target="_blank" class="enlace-mapa">
+          Ver ubicación en Google Maps
+        </a>
+        <!-- Mapa con ubicación exacta (ejemplo: Instituto Tecnológico de México) -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.536941786018!2d-96.92577488512456!3d19.532302086870838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db2ec5d2d7f8a5%3A0x9a3f5b1a3c4d9b1f!2sAv.%20Enrique%20C.%20R%C3%A9bsamen%20123%2C%20Centro%2C%2091000%20Xalapa-Enr%C3%ADquez%2C%20Ver.!5e0!3m2!1ses-419!2smx!4v1718300000000!5m2!1ses-419!2smx"
+            title="Ubicación de BusTickets Xalapa en Google Maps"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="mapa-embed">
+        </iframe>
+
+
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="contenedor-footer">
+      <div class="info-empresa">
+        <p>&copy; 2025 BusTickets Xalapa. Todos los derechos reservados.</p>
+        <div class="contactos">
+          <address>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:contacto@busticketsxalapa.com">contacto@busticketsxalapa.com</a>
+          </address>
+          <address>
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+522292015490">229 201 5490</a>
+          </address>
+          <address>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Av. Enrique C. Rébsamen 125, Centro, Xalapa</span>
+          </address>
+        </div>
+      </div>
+
+      <div class="redes-sociales">
+        <h4>Síguenos</h4>
+        <div class="iconos-redes">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="comun.js"></script>
+  <script src="contacto.js"></script>
 </body>
 </html>

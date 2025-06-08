@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="rutas.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
 </head>
 <body>
     <header class="hero" role="banner">
@@ -22,12 +21,21 @@
                 </ul>
             </nav>
         </div>
+            <nav aria-label="Migas de pan">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li aria-current="page">Rutas y Horarios</li>
+                </ol>
+            </nav>
+
     </header>
 
     <main role="main">
         <section class="rutas-container">
             <h2>Rutas y Horarios desde Xalapa</h2>
-            
+
+            <div id="mensaje-sistema" class="sr-only" aria-live="polite"></div>
+
             <form id="filtro-rutas" role="search" aria-label="Filtrar rutas">
                 <div class="filtro-container">
                     <label for="destino">Filtrar por destino:</label>
@@ -98,10 +106,10 @@
             </div>
         </div>
 
-        <div id="modal-pago" class="modal">
+        <div id="modal-pago" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-pago">
             <div class="modal-contenido">
-                <span class="cerrar-modal">&times;</span>
-                <h2>Pago de Boleto</h2>
+                <span class="cerrar-modal" tabindex="0">&times;</span>
+                <h2 id="titulo-pago">Pago de Boleto</h2>
                 <form id="formulario-pago">
                     <div class="grupo-formulario">
                         <label for="cantidad-asientos">Cantidad de Asientos</label>
@@ -140,10 +148,10 @@
             </div>
         </div>
 
-        <div id="modal-ticket" class="modal">
+        <div id="modal-ticket" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-ticket">
             <div class="modal-contenido ticket">
-                <span class="cerrar-modal">&times;</span>
-                <h2>Ticket de Compra</h2>
+                <span class="cerrar-modal" tabindex="0">&times;</span>
+                <h2 id="titulo-ticket">Ticket de Compra</h2>
                 <div id="contenido-ticket"></div>
                 <div class="botones-ticket">
                     <button id="btn-descargar-ticket" class="btn-descargar">
@@ -157,5 +165,6 @@
 
     <script src="comun.js"></script>
     <script src="rutas.js"></script>
+
 </body>
 </html>

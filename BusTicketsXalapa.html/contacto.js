@@ -1,8 +1,10 @@
-/* ======================
-   contacto.js actualizado con notificación flotante
-====================== */
+// ======================
+// contacto.js actualizado con accesibilidad (foco + aria-live)
+// ======================
+
 document.addEventListener('DOMContentLoaded', () => {
     configurarFormularioContacto();
+    agregarAreaLive(); // Asegura que exista el área aria-live
 });
 
 function configurarFormularioContacto() {
@@ -26,14 +28,17 @@ function validarFormularioContacto() {
         mostrarMensajeError('Por favor ingrese un nombre válido (mínimo 3 caracteres)');
         return false;
     }
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         mostrarMensajeError('Por favor ingrese un correo electrónico válido');
         return false;
     }
+
     if (!mensaje || mensaje.length < 10) {
         mostrarMensajeError('Por favor ingrese un mensaje válido (mínimo 10 caracteres)');
         return false;
     }
+
     return true;
 }
 
@@ -44,9 +49,22 @@ function enviarFormularioContacto() {
     }, 1000);
 }
 
+function agregarAreaLive() {
+    if (!document.getElementById('aria-live')) {
+        const liveRegion = document.createElement('div');
+        liveRegion.id = 'aria-live';
+        liveRegion.setAttribute('aria-live', 'polite');
+        liveRegion.setAttribute('aria-atomic', 'true');
+        liveRegion.classList.add('sr-only');
+        document.body.appendChild(liveRegion);
+    }
+}
+
 function mostrarMensajeExito() {
     const mensaje = document.createElement('div');
     mensaje.className = 'mensaje-flotante mensaje-exito';
+    mensaje.setAttribute('role', 'alert');
+    mensaje.setAttribute('tabindex', '-1');
     mensaje.innerHTML = `
         <div class="mensaje-contenido">
             <span class="icono"><i class="fas fa-check-circle"></i></span>
@@ -60,6 +78,7 @@ function mostrarMensajeExito() {
     `;
 
     document.body.appendChild(mensaje);
+    mensaje.focus(); // Establece el foco para lectores de pantalla
 
     setTimeout(() => {
         mensaje.classList.add('ocultando');
@@ -75,6 +94,8 @@ function mostrarMensajeExito() {
 function mostrarMensajeError(texto) {
     const mensaje = document.createElement('div');
     mensaje.className = 'mensaje-flotante mensaje-error';
+    mensaje.setAttribute('role', 'alert');
+    mensaje.setAttribute('tabindex', '-1');
     mensaje.innerHTML = `
         <div class="mensaje-contenido">
             <span class="icono"><i class="fas fa-exclamation-circle"></i></span>
@@ -88,6 +109,7 @@ function mostrarMensajeError(texto) {
     `;
 
     document.body.appendChild(mensaje);
+    mensaje.focus(); // Foco para que el lector lo anuncie
 
     setTimeout(() => {
         mensaje.classList.add('ocultando');

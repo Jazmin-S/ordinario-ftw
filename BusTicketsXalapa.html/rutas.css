@@ -309,3 +309,124 @@ input:invalid {
 input:valid {
     border-color: #28a745;
 }
+/* Media Queries para dispositivos móviles y tablets */
+@media (max-width: 768px) {
+    .filtro-container {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .filtro-container select {
+        max-width: 100%;
+        min-width: auto;
+        flex: none;
+    }
+
+    #tabla-rutas th, #tabla-rutas td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    .btn-comprar {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Formulario de pago en móviles */
+    #formulario-pago {
+        gap: 0.75rem;
+    }
+
+    .grupo-fechas-cvv {
+        flex-direction: column;
+    }
+
+    .grupo-fechas-cvv .grupo-formulario {
+        flex: none;
+    }
+
+    .btn-pagar {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    /* Modal contenido para móviles */
+    .modal-contenido {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    /* Ticket modal más compacto */
+    .modal-contenido.ticket {
+        max-width: 95%;
+    }
+
+    /* Tabla: permitir scroll horizontal */
+    .tabla-rutas-container {
+        margin: 1rem 0;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #tabla-rutas th, #tabla-rutas td {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+
+    .btn-comprar {
+        padding: 5px 8px;
+        font-size: 0.75rem;
+    }
+
+    .filtro-container label {
+        font-size: 0.9rem;
+    }
+
+    .btn-filtrar {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .btn-pagar {
+        font-size: 0.85rem;
+    }
+
+    .grupo-formulario input {
+        font-size: 0.9rem;
+    }
+}
+.breadcrumb {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb li {
+    margin-right: 0.5rem;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: "›";
+    margin-left: 0.5rem;
+    color: #6c757d;
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumb [aria-current="page"] {
+    color: #6c757d;
+    font-weight: bold;
+}

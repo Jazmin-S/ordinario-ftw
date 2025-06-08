@@ -219,12 +219,84 @@ footer {
 }
 
 /* Responsive */
+/* Ajustes para tablets y pantallas medianas */
 @media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+
     .contenedor-footer {
         flex-direction: column;
+        gap: 1.5rem;
     }
     
     .redes-sociales {
         margin-top: 1rem;
+    }
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 480px) {
+    header, footer {
+        padding: 0.5rem 1rem;
+    }
+
+    nav a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    main {
+        padding: 0.5rem;
+    }
+
+    .hero {
+        height: 220px;
+    }
+
+    .hero .overlay {
+        padding: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero nav ul {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .hero nav a {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .info-empresa {
+        min-width: 100%;
+    }
+
+    .contactos address {
+        font-size: 0.9rem;
+    }
+
+    .iconos-redes a {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Muy pequeñas, ajustar footer texto */
+@media (max-width: 360px) {
+    footer {
+        font-size: 0.85rem;
+        padding: 1rem;
     }
 }

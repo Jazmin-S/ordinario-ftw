@@ -2,23 +2,25 @@
     FUNCIONES COMPARTIDAS
 ====================== */
 
-// Variables globales para almacenar la información del viaje
+// Variable global para almacenar el viaje que ha seleccionado el usuario
 let viajeSeleccionado = null;
 
 /* ======================
     FUNCIÓN PARA CALCULAR DURACIÓN ENTRE HORAS EN FORMATO HH:mm
 ====================== */
 function calcularDuracion(salida, llegada) {
-    const formatoHora = /^\d{2}:\d{2}$/;
+    const formatoHora = /^\d{2}:\d{2}$/; // Expresión regular para validar formato HH:mm
     if (!formatoHora.test(salida) || !formatoHora.test(llegada)) return 'N/A';
 
-    const [hS, mS] = salida.split(':').map(Number);
-    const [hL, mL] = llegada.split(':').map(Number);
+    const [hS, mS] = salida.split(':').map(Number); // Separar y convertir a número la hora de salida
+    const [hL, mL] = llegada.split(':').map(Number); // Separar y convertir a número la hora de llegada
 
+    // Validar que las horas y minutos estén en rango válido
     if (hS > 23 || mS > 59 || hL > 23 || mL > 59) return 'N/A';
 
+    // Calcular minutos totales del viaje
     let minutosTotales = (hL * 60 + mL) - (hS * 60 + mS);
-    if (minutosTotales < 0) minutosTotales += 24 * 60;
+    if (minutosTotales < 0) minutosTotales += 24 * 60; // Ajuste para viajes que cruzan medianoche
 
     const horas = Math.floor(minutosTotales / 60);
     const minutos = minutosTotales % 60;
@@ -29,36 +31,42 @@ function calcularDuracion(salida, llegada) {
     FUNCIÓN PARA MOSTRAR MENSAJE DE ERROR
 ====================== */
 function mostrarError(mensaje, elementoContenedor) {
-    const contenedor = document.querySelector(elementoContenedor);
+    const contenedor = document.querySelector(elementoContenedor); // Selecciona el contenedor por selector
     if (!contenedor) return;
 
+    // Inserta mensaje de error con botón de reintento
     contenedor.innerHTML = `
         <div class="error">
             <p>${mensaje}</p>
             <button class="btn-reintentar">Reintentar</button>
         </div>`;
     
+    // Asocia el evento al botón para volver a intentar la acción
     contenedor.querySelector('.btn-reintentar').addEventListener('click', reintentarAccion);
 }
 
 /* ======================
     FUNCIONES AUXILIARES PARA PAGO
 ====================== */
+
+// Genera una cantidad de asientos aleatorios en formato fila + letra (ej. 3B)
 function generarAsientos(cantidad) {
     const asientos = [];
     for (let i = 0; i < cantidad; i++) {
         const fila = Math.floor(Math.random() * 10) + 1;
-        const letra = String.fromCharCode(65 + Math.floor(Math.random() * 4)); // A-D
+        const letra = String.fromCharCode(65 + Math.floor(Math.random() * 4)); // Letras A-D
         asientos.push(`${fila}${letra}`);
     }
     return asientos;
 }
 
+// Genera un nombre de chofer aleatorio de una lista predefinida
 function generarNombreChoferAleatorio() {
     const nombres = ['Juan Pérez', 'María González', 'Carlos López', 'Ana Martínez', 'Pedro Sánchez'];
     return nombres[Math.floor(Math.random() * nombres.length)];
 }
 
+// Formatea el número de tarjeta con espacios cada 4 dígitos
 function formatearNumeroTarjeta(e) {
     let valor = e.target.value.replace(/\s/g, '');
     if (valor.length > 16) valor = valor.substring(0, 16);
@@ -72,6 +80,7 @@ function formatearNumeroTarjeta(e) {
     e.target.value = formateado;
 }
 
+// Formatea la fecha de expiración como MM/AA
 function formatearFechaExpiracion(e) {
     let valor = e.target.value.replace(/\D/g, '');
     if (valor.length > 2) {
@@ -88,20 +97,20 @@ function mostrarModalPago() {
     if (!modal) return;
     
     modal.style.display = 'block';
-    
-    // Configurar evento para cerrar modal
+
+    // Cerrar el modal al hacer clic en la X
     document.querySelector('.cerrar-modal').onclick = () => {
         modal.style.display = 'none';
     };
-    
-    // Configurar evento para cerrar al hacer clic fuera
+
+    // Cerrar el modal al hacer clic fuera del contenido
     window.onclick = (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
     };
-    
-    // Configurar validación del formulario de pago
+
+    // Validar y procesar el pago al enviar el formulario
     const formularioPago = document.getElementById('formulario-pago');
     if (formularioPago) {
         formularioPago.onsubmit = (e) => {
@@ -111,8 +120,8 @@ function mostrarModalPago() {
             }
         };
     }
-    
-    // Formatear inputs de tarjeta
+
+    // Formatear campos de tarjeta y expiración en tiempo real
     const numeroTarjeta = document.getElementById('numero-tarjeta');
     const fechaExpiracion = document.getElementById('fecha-expiracion');
     
@@ -128,44 +137,45 @@ function mostrarModalPago() {
     FUNCIÓN PARA VALIDAR EL PAGO
 ====================== */
 function validarPago() {
+    // Obtener datos del formulario
     const nombre = document.getElementById('nombre-tarjeta')?.value.trim();
     const numero = document.getElementById('numero-tarjeta')?.value.replace(/\s/g, '');
     const fecha = document.getElementById('fecha-expiracion')?.value;
     const cvv = document.getElementById('cvv')?.value;
     const email = document.getElementById('email-pago')?.value.trim();
     const cantidadAsientos = document.getElementById('cantidad-asientos')?.value;
-    
-    // Validaciones básicas
+
+    // Validaciones básicas con alertas
     if (!nombre || nombre.length < 3) {
         alert('Por favor ingrese un nombre válido');
         return false;
     }
-    
+
     if (!/^\d{16}$/.test(numero)) {
         alert('Por favor ingrese un número de tarjeta válido (16 dígitos)');
         return false;
     }
-    
+
     if (!/^\d{2}\/\d{2}$/.test(fecha)) {
         alert('Por favor ingrese una fecha de expiración válida (MM/AA)');
         return false;
     }
-    
+
     if (!/^\d{3}$/.test(cvv)) {
         alert('Por favor ingrese un CVV válido (3 dígitos)');
         return false;
     }
-    
+
     if (!/^\S+@\S+\.\S+$/.test(email)) {
         alert('Por favor ingrese un email válido');
         return false;
     }
-    
+
     if (!cantidadAsientos || cantidadAsientos < 1) {
         alert('Por favor seleccione la cantidad de asientos');
         return false;
     }
-    
+
     return true;
 }
 
@@ -175,10 +185,12 @@ function validarPago() {
 function procesarPago() {
     const cantidadAsientos = parseInt(document.getElementById('cantidad-asientos').value) || 1;
     const precioUnitario = parseFloat(viajeSeleccionado.precio);
-    
+
+    // Generar y asignar asientos aleatorios al viaje
     viajeSeleccionado.asientos = generarAsientos(cantidadAsientos);
     viajeSeleccionado.precioTotal = (precioUnitario * cantidadAsientos).toFixed(2);
-    
+
+    // Esperar un momento y luego mostrar el ticket
     setTimeout(() => {
         document.getElementById('modal-pago').style.display = 'none';
         generarTicket();
@@ -192,25 +204,18 @@ function generarTicket() {
     const modalTicket = document.getElementById('modal-ticket');
     const contenidoTicket = document.getElementById('contenido-ticket');
     if (!modalTicket || !contenidoTicket) return;
-    
-    // Obtener cantidad de asientos
+
     const cantidadAsientos = document.getElementById('cantidad-asientos')?.value || 1;
     const precioUnitario = parseFloat(viajeSeleccionado.precio);
     const precioTotal = (precioUnitario * cantidadAsientos).toFixed(2);
-    
-    // Generar número de reserva aleatorio
+
     const numeroReserva = 'RES-' + Math.floor(100000 + Math.random() * 900000);
-    
-    // Obtener fecha y hora actual
+
     const ahora = new Date();
-    const fechaCompra = ahora.toLocaleDateString('es-MX', {
-        day: '2-digit', month: '2-digit', year: 'numeric'
-    });
-    const horaCompra = ahora.toLocaleTimeString('es-MX', {
-        hour: '2-digit', minute: '2-digit'
-    });
-    
-    // Generar HTML del ticket
+    const fechaCompra = ahora.toLocaleDateString('es-MX', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const horaCompra = ahora.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+
+    // Crear HTML para mostrar los detalles del ticket
     contenidoTicket.innerHTML = `
         <div class="ticket-header">
             <h3>BusTickets Xalapa</h3>
@@ -218,46 +223,16 @@ function generarTicket() {
         </div>
         
         <div class="ticket-info">
-            <div>
-                <strong>Número de reserva:</strong>
-                ${numeroReserva}
-            </div>
-            <div>
-                <strong>Fecha de compra:</strong>
-                ${fechaCompra} ${horaCompra}
-            </div>
-            <div>
-                <strong>Destino:</strong>
-                ${viajeSeleccionado?.destino || 'N/A'}
-            </div>
-            <div>
-                <strong>Salida:</strong>
-                ${viajeSeleccionado?.salida || 'N/A'}
-            </div>
-            <div>
-                <strong>Llegada estimada:</strong>
-                ${viajeSeleccionado?.llegada || 'N/A'}
-            </div>
-            <div>
-                <strong>Duración:</strong>
-                ${viajeSeleccionado?.duracion || 'N/A'}
-            </div>
-            <div>
-                <strong>Tipo de autobús:</strong>
-                ${viajeSeleccionado?.tipo || 'N/A'}
-            </div>
-            <div>
-                <strong>Precio Total:</strong>
-                $${precioTotal} MXN (${cantidadAsientos} asiento${cantidadAsientos > 1 ? 's' : ''})
-            </div>
-            <div>
-                <strong>Chofer:</strong>
-                ${viajeSeleccionado?.chofer || 'N/A'}
-            </div>
-            <div>
-                <strong>Pasajero:</strong>
-                ${document.getElementById('nombre-tarjeta')?.value || 'N/A'}
-            </div>
+            <div><strong>Número de reserva:</strong>${numeroReserva}</div>
+            <div><strong>Fecha de compra:</strong>${fechaCompra} ${horaCompra}</div>
+            <div><strong>Destino:</strong>${viajeSeleccionado?.destino || 'N/A'}</div>
+            <div><strong>Salida:</strong>${viajeSeleccionado?.salida || 'N/A'}</div>
+            <div><strong>Llegada estimada:</strong>${viajeSeleccionado?.llegada || 'N/A'}</div>
+            <div><strong>Duración:</strong>${viajeSeleccionado?.duracion || 'N/A'}</div>
+            <div><strong>Tipo de autobús:</strong>${viajeSeleccionado?.tipo || 'N/A'}</div>
+            <div><strong>Precio Total:</strong>$${precioTotal} MXN (${cantidadAsientos} asiento${cantidadAsientos > 1 ? 's' : ''})</div>
+            <div><strong>Chofer:</strong>${viajeSeleccionado?.chofer || 'N/A'}</div>
+            <div><strong>Pasajero:</strong>${document.getElementById('nombre-tarjeta')?.value || 'N/A'}</div>
         </div>
         
         <div class="ticket-asientos">
@@ -270,19 +245,20 @@ function generarTicket() {
             <p>Para cualquier duda, contacta a: contacto@busticketsxalapa.com</p>
         </div>
     `;
-    
-    // Mostrar modal de ticket
+
     modalTicket.style.display = 'block';
-    
-    // Configurar eventos para el modal de ticket
+
+    // Evento para cerrar el modal del ticket
     document.getElementById('btn-cerrar-ticket')?.addEventListener('click', () => {
         modalTicket.style.display = 'none';
     });
-    
+
+    // Evento para descargar el ticket
     document.getElementById('btn-descargar-ticket')?.addEventListener('click', () => {
         descargarTicket(numeroReserva);
     });
-    
+
+    // Cerrar modal al hacer clic fuera
     window.onclick = (e) => {
         if (e.target === modalTicket) {
             modalTicket.style.display = 'none';
@@ -297,6 +273,7 @@ function descargarTicket(numeroReserva) {
     const contenido = document.getElementById('contenido-ticket')?.innerHTML;
     if (!contenido) return;
 
+    // Estilo básico para el documento impreso
     const estilo = `
         <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
@@ -309,7 +286,8 @@ function descargarTicket(numeroReserva) {
             .ticket-footer { text-align: center; margin-top: 20px; border-top: 2px dashed #000; padding-top: 15px; font-size: 14px; }
         </style>
     `;
-    
+
+    // Crear nueva ventana para imprimir
     const ventana = window.open('', '_blank');
     ventana.document.write(`
         <html>
