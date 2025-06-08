@@ -109,3 +109,9 @@ El proyecto está organizado en los siguientes archivos:
 * Búsqueda avanzada de rutas
 * Sección de promociones y descuentos
 
+
+## 📘 Conclusión
+
+Este proyecto fue desarrollado como parte del curso **Fundamentos de Tecnologías Web**, con el objetivo de crear páginas web accesibles para personas con discapacidad visual. A través de su construcción, aprendimos la importancia de implementar buenas prácticas de accesibilidad —como el uso de etiquetas semánticas, roles ARIA, navegación por teclado y alto contraste— para hacer que los sitios sean más inclusivos.
+
+Además de adquirir habilidades técnicas, este proyecto nos permitió reflexionar sobre la necesidad de diseñar pensando en todos los usuarios, promoviendo una web más justa y empática. Crear accesibilidad no es solo una obligación técnica, sino un compromiso con la equidad digital.
