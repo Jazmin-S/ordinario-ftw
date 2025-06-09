@@ -224,19 +224,19 @@
 .ticket-header {
     text-align: center;
     margin-bottom: 1.5rem;
-    border-bottom: 2px dashed #333;
+    border-bottom: 2px dashed #5e0000;
     padding-bottom: 1rem;
 }
 
 .ticket-header h3 {
     margin: 0;
-    color: #b31c1c;
+    color: #8b0000;
     font-size: 1.5rem;
 }
 
 .ticket-header p {
     margin: 0.5rem 0 0;
-    color: #666;
+    color: #400101;
 }
 
 .ticket-info {
@@ -257,7 +257,7 @@
 }
 
 .ticket-asientos {
-    background: #9b0c02;
+    background: #bdbdbd;
     padding: 1rem;
     border-radius: 5px;
     margin: 1rem 0;
@@ -309,6 +309,16 @@ input:invalid {
 input:valid {
     border-color: #28a745;
 }
+#contenido-ticket {
+    background: rgb(235, 235, 235);
+    border: 1px solid #140a0a;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    color: #000; /* <- Esta línea asegura que el texto sea negro */
+}
+
 /* Media Queries para dispositivos móviles y tablets */
 @media (max-width: 768px) {
     .filtro-container {

@@ -9,34 +9,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutas y Horarios - BusTickets Xalapa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="rutas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
 <body>
+    <a href="#contenido-principal" class="sr-only">Saltar al contenido principal</a>
+
     <header class="hero" role="banner">
         <div class="overlay">
             <h1>Rutas y Horarios desde Xalapa</h1>
             <nav role="navigation" aria-label="Menú principal">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="rutas.html">Rutas y Horarios</a></li>
+                    <li><a href="rutas.html" aria-current="page">Rutas y Horarios</a></li>
                     <li><a href="contacto.html">Contacto </a></li>
                 </ul>
             </nav>
         </div>
-            <nav aria-label="Migas de pan">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li aria-current="page">Rutas y Horarios</li>
-                </ol>
-            </nav>
-
     </header>
 
-    <main role="main">
+    <main id="contenido-principal" role="main">
         <section class="rutas-container">
             <h2>Rutas y Horarios desde Xalapa</h2>
 
             <div id="mensaje-sistema" class="sr-only" aria-live="polite"></div>
 
-            <form id="filtro-rutas" role="search" aria-label="Filtrar rutas">
+            <form id="filtro-rutas" role="search" aria-label="Filtrar rutas por destino">
                 <div class="filtro-container">
                     <label for="destino">Filtrar por destino:</label>
                     <select id="destino" name="destino">
@@ -48,22 +54,22 @@
                         <option value="Cancún">Cancún</option>
                         <option value="monterrey">Monterrey</option>
                     </select>
-                    <button type="submit" class="btn-filtrar">
-                        <i class="fas fa-filter"></i> Filtrar
+                    <button type="submit" class="btn-filtrar" aria-label="Aplicar filtro de destino">
+                        <i class="fas fa-filter" aria-hidden="true"></i> Filtrar
                     </button>
                 </div>
             </form>
 
             <div class="tabla-rutas-container">
-                <table id="tabla-rutas" aria-label="Horarios de autobuses">
+                <table id="tabla-rutas" aria-label="Tabla de horarios de autobuses">
                     <thead>
                         <tr>
-                            <th scope="col">Destino <i class="fas fa-map-marker-alt"></i></th>
-                            <th scope="col">Salida <i class="fas fa-clock"></i></th>
-                            <th scope="col">Llegada <i class="fas fa-flag-checkered"></i></th>
-                            <th scope="col">Duración <i class="fas fa-hourglass-half"></i></th>
-                            <th scope="col">Precio <i class="fas fa-tag"></i></th>
-                            <th scope="col">Tipo <i class="fas fa-bus"></i></th>
+                            <th scope="col">Destino <i class="fas fa-map-marker-alt" aria-hidden="true"></i></th>
+                            <th scope="col">Salida <i class="fas fa-clock" aria-hidden="true"></i></th>
+                            <th scope="col">Llegada <i class="fas fa-flag-checkered" aria-hidden="true"></i></th>
+                            <th scope="col">Duración <i class="fas fa-hourglass-half" aria-hidden="true"></i></th>
+                            <th scope="col">Precio <i class="fas fa-tag" aria-hidden="true"></i></th>
+                            <th scope="col">Tipo <i class="fas fa-bus" aria-hidden="true"></i></th>
                             <th scope="col">Acción</th>
                         </tr>
                     </thead>
@@ -81,36 +87,36 @@
                 <p>&copy; 2025 BusTickets Xalapa. Todos los derechos reservados.</p>
                 <div class="contactos">
                     <address>
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <a href="mailto:contacto@busticketsxalapa.com">contacto@busticketsxalapa.com</a>
                     </address>
                     <address>
-                        <i class="fas fa-phone-alt"></i>
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
                         <a href="tel:+522292015490">229 201 5490</a>
                     </address>
                     <address>
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         <span>Av. Enrique C. Rébsamen 125, Centro, Xalapa</span>
                     </address>
                 </div>
             </div>
 
             <div class="redes-sociales">
-                <h4>Síguenos</h4>
-                <div class="iconos-redes">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <h4 id="titulo-redes">Síguenos</h4>
+                <div class="iconos-redes" aria-labelledby="titulo-redes">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
 
         <div id="modal-pago" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-pago">
             <div class="modal-contenido">
-                <span class="cerrar-modal" tabindex="0">&times;</span>
+                <span class="cerrar-modal" tabindex="0" role="button" aria-label="Cerrar ventana de pago">&times;</span>
                 <h2 id="titulo-pago">Pago de Boleto</h2>
-                <form id="formulario-pago">
+                <form id="formulario-pago" aria-label="Formulario de pago de boleto">
                     <div class="grupo-formulario">
                         <label for="cantidad-asientos">Cantidad de Asientos</label>
                         <select id="cantidad-asientos" required>
@@ -150,14 +156,14 @@
 
         <div id="modal-ticket" class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-ticket">
             <div class="modal-contenido ticket">
-                <span class="cerrar-modal" tabindex="0">&times;</span>
+                <span class="cerrar-modal" tabindex="0" role="button" aria-label="Cerrar ventana del ticket">&times;</span>
                 <h2 id="titulo-ticket">Ticket de Compra</h2>
                 <div id="contenido-ticket"></div>
                 <div class="botones-ticket">
-                    <button id="btn-descargar-ticket" class="btn-descargar">
-                        <i class="fas fa-download"></i> Descargar Ticket
+                    <button id="btn-descargar-ticket" class="btn-descargar" aria-label="Descargar ticket">
+                        <i class="fas fa-download" aria-hidden="true"></i> Descargar Ticket
                     </button>
-                    <button id="btn-cerrar-ticket" class="btn-cerrar">Cerrar</button>
+                    <button id="btn-cerrar-ticket" class="btn-cerrar" aria-label="Cerrar ticket">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -165,6 +171,7 @@
 
     <script src="comun.js"></script>
     <script src="rutas.js"></script>
-
 </body>
+</html>
+
 </html>

@@ -23,7 +23,7 @@ nav ul {
 }
 
 nav a {
-    color: white;
+    color: rgb(119, 15, 15);
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
@@ -41,7 +41,7 @@ main {
 
 footer {
     background-color: #8e1616;
-    color: white;
+    color: rgb(220, 24, 24);
     text-align: center;
     padding: 1rem;
     margin-top: 2rem;
@@ -299,4 +299,33 @@ footer {
         font-size: 0.85rem;
         padding: 1rem;
     }
+}
+/* Estilos para los items de detalles */
+.detalle-item {
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-left: 4px solid transparent;
+}
+
+/* Efecto hover/focus */
+.detalle-item.destacado {
+    background-color: #e9f5ff;
+    border-left: 4px solid #007bff;
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el icono dentro del detalle */
+.detalle-item.destacado .icono-detalle {
+    color: #007bff;
+    transform: scale(1.1);
+}
+
+/* Estilos para el texto */
+.detalle-item.destacado h3,
+.detalle-item.destacado p {
+    color: #0056b3;
 }

@@ -587,3 +587,77 @@
     white-space: nowrap;
     border: 0;
 }
+/* Estilos para elementos accesibles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.required {
+  color: #c00;
+}
+/* ============================================
+   ESTILOS PARA CAMPOS VALIDADOS
+   ============================================ */
+.grupo-formulario input.campo-valido,
+.grupo-formulario textarea.campo-valido {
+    border-color: #4CAF50 !important;
+    background-color: #f8fff8;
+    outline: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.grupo-formulario input.campo-valido:focus,
+.grupo-formulario textarea.campo-valido:focus {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Icono de check para campos válidos */
+.grupo-formulario {
+    position: relative;
+}
+
+.grupo-formulario input.campo-valido,
+.grupo-formulario textarea.campo-valido {
+    padding-right: 2.5rem;
+}
+
+.grupo-formulario input.campo-valido::after,
+.grupo-formulario textarea.campo-valido::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4CAF50;
+    font-size: 1rem;
+}
+
+/* Transiciones suaves */
+.grupo-formulario input,
+.grupo-formulario textarea {
+    transition: all 0.3s ease;
+}

@@ -417,25 +417,6 @@ section[aria-labelledby="destacados-heading"] h2::after {
     text-decoration: none;
 }
 
-/* 3. Estilos para navegación por teclado */
-.skip-link {
-    position: absolute;
-    left: -9999px;
-    top: 0;
-    background: #000;
-    color: white;
-    padding: 8px;
-    z-index: 100;
-}
-
-.skip-link:focus {
-    left: 0;
-}
-
-:focus {
-    outline: 3px solid #b30000;
-    outline-offset: 2px;
-}
 
 /* 4. Mejoras para el carrusel accesible */
 .carrusel-container {
@@ -548,54 +529,7 @@ img {
     height: auto;
 }
 
-/* 9. Estilos para el foco en elementos interactivos */
-button:focus, 
-a:focus, 
-input:focus, 
-select:focus, 
-textarea:focus {
-    outline: 3px solid #760101;
-    outline-offset: 2px;
-}
 
-/* 10. Estilos para el footer accesible */
-footer {
-    background-color: #981f00;
-    color: white;
-    padding: 30px 0;
-}
-
-footer a {
-    color: #adb5bd;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-.contactos address {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.iconos-redes {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.iconos-redes a {
-    font-size: 1.2rem;
-    color: white;
-}
-
-.iconos-redes a:hover {
-    transform: translateY(-2px);
-}
 /* Tabletas y pantallas medianas */
 @media (max-width: 1024px) {
   .contenedor-nosotros,
@@ -685,4 +619,21 @@ footer a:hover {
   .detalle-item h4 {
     font-size: 1rem;
   }
+}
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    z-index: 100;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #0056b3;
+    outline-offset: 2px;
 }
