@@ -29,7 +29,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #aac3dc;
+    background-color: #030507;
     border-radius: 4px;
 }
 
@@ -65,7 +65,7 @@ footer {
     }
 }
 
-/* Estilos para el hero */
+/* Estilos para el hero titulo principal*/
 .hero {
     background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/cnne-1366197-image-16.png?c=16x9&q=h_833,w_1480,c_fill');
     background-size: cover;
@@ -312,7 +312,7 @@ footer {
 
 /* Efecto hover/focus */
 .detalle-item.destacado {
-    background-color: #e9f5ff;
+    background-color: #cecece;
     border-left: 4px solid #007bff;
     transform: translateX(5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

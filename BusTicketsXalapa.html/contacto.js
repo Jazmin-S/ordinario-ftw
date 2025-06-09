@@ -2,24 +2,27 @@
 // contacto.js - Versión con validación visual y mensajes flotantes
 // ======================
 
+// Espera a que el DOM esté completamente cargado antes de ejecutar configuraciones
 document.addEventListener('DOMContentLoaded', () => {
-    configurarFormularioContacto();
-    configurarValidacionEnTiempoReal();
-    configurarEventosTeclado();
+    configurarFormularioContacto();           // Configura la lógica al enviar el formulario
+    configurarValidacionEnTiempoReal();       // Habilita validación mientras se escribe
+    configurarEventosTeclado();               // Mejora accesibilidad con eventos de teclado
 });
 
+// Configura el envío del formulario y muestra mensaje de éxito si es válido
 function configurarFormularioContacto() {
     const formulario = document.getElementById('formulario-contacto');
     if (!formulario) return;
 
     formulario.addEventListener('submit', (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Previene envío tradicional
         const esValido = validarFormularioContacto();
         
         if (esValido) {
+            // Muestra mensaje flotante de éxito
             mostrarMensajeExitoFlotante('¡Mensaje enviado con éxito!', 'Gracias por contactarnos. Nos pondremos en contacto contigo pronto.');
-            formulario.reset();
-            // Quitar clases de validación al resetear
+            formulario.reset(); // Limpia formulario
+            // Quita clases de validación de todos los campos
             document.querySelectorAll('.grupo-formulario input, .grupo-formulario textarea').forEach(campo => {
                 campo.classList.remove('campo-valido');
             });
@@ -27,6 +30,7 @@ function configurarFormularioContacto() {
     });
 }
 
+// Habilita validación automática al escribir o salir del campo
 function configurarValidacionEnTiempoReal() {
     const campos = ['nombre', 'email', 'mensaje', 'telefono'];
     
@@ -34,10 +38,12 @@ function configurarValidacionEnTiempoReal() {
         const campo = document.getElementById(id);
         if (!campo) return;
         
+        // Valida al salir del campo
         campo.addEventListener('blur', () => {
             validarCampo(campo);
         });
         
+        // Valida al escribir si no está vacío, o limpia validación si lo está
         campo.addEventListener('input', () => {
             if (campo.value.trim() === '') {
                 limpiarValidacion(campo);
@@ -48,6 +54,7 @@ function configurarValidacionEnTiempoReal() {
     });
 }
 
+// Lógica de validación para cada campo del formulario
 function validarCampo(campo) {
     const valor = campo.value.trim();
     let esValido = true;
@@ -85,7 +92,7 @@ function validarCampo(campo) {
             break;
             
         case 'telefono':
-            // Validación opcional para teléfono
+            // El campo es opcional pero si se llena debe tener entre 10 y 15 dígitos válidos
             if (valor && !/^[\d\s+-]{10,15}$/.test(valor)) {
                 esValido = false;
                 mensajeError = 'Teléfono inválido (10-15 dígitos)';
@@ -98,13 +105,13 @@ function validarCampo(campo) {
         return false;
     }
     
-    // Si el campo es válido
-    mostrarCampoValido(campo);
+    mostrarCampoValido(campo); // Muestra visual de campo correcto
     return true;
 }
 
+// Muestra mensaje de error debajo del campo correspondiente
 function mostrarErrorCampo(campo, mensaje) {
-    limpiarValidacion(campo);
+    limpiarValidacion(campo); // Elimina validaciones anteriores
     
     const errorId = `${campo.id}-error`;
     let errorElement = document.getElementById(errorId);
@@ -124,12 +131,14 @@ function mostrarErrorCampo(campo, mensaje) {
     campo.classList.add('campo-invalido');
 }
 
+// Aplica estilos e indicadores ARIA para campos válidos
 function mostrarCampoValido(campo) {
     limpiarValidacion(campo);
     campo.classList.add('campo-valido');
     campo.setAttribute('aria-invalid', 'false');
 }
 
+// Elimina mensajes de error y clases visuales del campo
 function limpiarValidacion(campo) {
     const errorId = `${campo.id}-error`;
     const errorElement = document.getElementById(errorId);
@@ -143,6 +152,7 @@ function limpiarValidacion(campo) {
     campo.classList.remove('campo-invalido', 'campo-valido');
 }
 
+// Valida todos los campos del formulario
 function validarFormularioContacto() {
     let esValido = true;
     const camposRequeridos = ['nombre', 'email', 'mensaje'];
@@ -151,13 +161,13 @@ function validarFormularioContacto() {
         const campo = document.getElementById(id);
         if (campo && !validarCampo(campo)) {
             if (esValido) {
-                campo.focus();
+                campo.focus(); // Enfoca el primer campo con error
                 esValido = false;
             }
         }
     });
     
-    // Validar teléfono (opcional)
+    // Valida campo de teléfono si se ha llenado
     const telefono = document.getElementById('telefono');
     if (telefono && telefono.value.trim() !== '' && !validarCampo(telefono)) {
         if (esValido) {
@@ -173,6 +183,7 @@ function validarFormularioContacto() {
     return esValido;
 }
 
+// Crea y muestra mensaje flotante de éxito
 function mostrarMensajeExitoFlotante(titulo, mensaje) {
     const mensajeId = 'mensaje-flotante-exito-' + Date.now();
     const mensajeElement = document.createElement('div');
@@ -194,7 +205,7 @@ function mostrarMensajeExitoFlotante(titulo, mensaje) {
     `;
 
     document.body.appendChild(mensajeElement);
-    mensajeElement.focus();
+    mensajeElement.focus(); // Asegura lectura por lector de pantalla
 
     const btnCerrar = mensajeElement.querySelector('.btn-cerrar-mensaje');
     btnCerrar.addEventListener('click', () => {
@@ -203,9 +214,10 @@ function mostrarMensajeExitoFlotante(titulo, mensaje) {
 
     setTimeout(() => {
         cerrarMensajeFlotante(mensajeElement);
-    }, 5000);
+    }, 5000); // Se cierra automáticamente tras 5 segundos
 }
 
+// Muestra un mensaje flotante de error similar al de éxito
 function mostrarMensajeErrorFlotante(titulo, mensaje) {
     const mensajeId = 'mensaje-flotante-error-' + Date.now();
     const mensajeElement = document.createElement('div');
@@ -239,13 +251,15 @@ function mostrarMensajeErrorFlotante(titulo, mensaje) {
     }, 5000);
 }
 
+// Añade una clase para ocultar suavemente y luego elimina el mensaje del DOM
 function cerrarMensajeFlotante(elemento) {
     elemento.classList.add('ocultando');
     setTimeout(() => {
         elemento.remove();
-    }, 500);
+    }, 500); // Tiempo para permitir transición CSS
 }
 
+// Mejora accesibilidad del grupo de radio buttons y permite cerrar mensajes con ESC
 function configurarEventosTeclado() {
     const radios = document.querySelectorAll('[name="preferencia"]');
     
@@ -274,6 +288,7 @@ function configurarEventosTeclado() {
         });
     });
     
+    // Cierra mensajes flotantes presionando Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             const mensajes = document.querySelectorAll('.mensaje-flotante');
