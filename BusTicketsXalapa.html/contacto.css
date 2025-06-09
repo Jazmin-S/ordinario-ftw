@@ -79,36 +79,56 @@
 /* ============================================
    ESTILOS PARA EL FORMULARIO
    ============================================ */
+
 .formulario-contacto {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.8rem;
+  gap: 1.2rem; /* Reducir espacio entre campos (antes 1.8rem) */
+  max-width: 600px; /* Limitar ancho máximo del formulario */
+  margin: 0 auto; /* Centrar el formulario */
 }
 
 .grupo-formulario {
   position: relative;
+  margin-bottom: 0.5rem; /* Reducir espacio inferior (antes sin margin-bottom) */
 }
 
 .grupo-formulario label {
   display: block;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem; /* Reducir espacio bajo etiqueta (antes 0.8rem) */
   color: var(--color-texto);
   font-weight: 600;
-  font-size: 0.95rem;
-  transition: var(--transicion);
+  font-size: 0.9rem; /* Tamaño de fuente más pequeño (antes 0.95rem) */
 }
 
 .grupo-formulario input,
 .grupo-formulario textarea,
 .grupo-formulario select {
   width: 100%;
-  padding: 1.1rem;
+  padding: 0.8rem; /* Padding más compacto (antes 1.1rem) */
   border: 2px solid var(--color-borde);
   border-radius: var(--radio-borde);
-  font-size: 1rem;
+  font-size: 0.95rem; /* Mantener tamaño de texto legible */
   transition: var(--transicion);
   background-color: var(--color-fondo);
   font-family: inherit;
+  box-sizing: border-box; /* Asegurar que padding no afecte el ancho total */
+}
+
+.grupo-formulario textarea {
+  min-height: 120px; /* Altura reducida (antes 160px) */
+  resize: vertical;
+}
+
+/* Mantener efectos hover y focus */
+.grupo-formulario:hover label {
+  color: var(--color-primario);
+}
+
+.grupo-formulario:hover input,
+.grupo-formulario:hover textarea,
+.grupo-formulario:hover select {
+  border-color: #c0c0c0;
 }
 
 .grupo-formulario input:focus,
@@ -120,20 +140,20 @@
   outline: none;
 }
 
-.grupo-formulario textarea {
-  min-height: 160px;
-  resize: vertical;
-}
-
-/* Efectos de hover para los campos */
-.grupo-formulario:hover label {
-  color: var(--color-primario);
-}
-
-.grupo-formulario:hover input,
-.grupo-formulario:hover textarea,
-.grupo-formulario:hover select {
-  border-color: #c0c0c0;
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .formulario-contacto {
+    gap: 1rem;
+  }
+  
+  .grupo-formulario input,
+  .grupo-formulario textarea {
+    padding: 0.7rem;
+  }
+  
+  .grupo-formulario textarea {
+    min-height: 100px;
+  }
 }
 
 /* ============================================

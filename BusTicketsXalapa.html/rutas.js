@@ -175,3 +175,44 @@ function reintentarAccion() {
     // Vuelve a cargar las rutas usando el valor actual o 'todos' si no hay valor
     cargarRutas(destino);
 }
+function mostrarModalTicket(infoTicket) {
+    const modal = document.getElementById('modal-ticket');
+    const contenidoTicket = document.getElementById('contenido-ticket');
+    const contenidoPrincipal = document.getElementById('contenido-principal');
+
+    // Oculta el contenido principal para lectores de pantalla
+    contenidoPrincipal.setAttribute('aria-hidden', 'true');
+
+    // Muestra el modal
+    modal.hidden = false;
+
+    // Inserta el contenido del ticket en formato accesible
+    contenidoTicket.innerHTML = `
+        <p><strong>Destino:</strong> ${infoTicket.destino}</p>
+        <p><strong>Salida:</strong> ${infoTicket.salida}</p>
+        <p><strong>Llegada:</strong> ${infoTicket.llegada}</p>
+        <p><strong>Duración:</strong> ${infoTicket.duracion}</p>
+        <p><strong>Precio:</strong> $${infoTicket.precio}</p>
+        <p><strong>Tipo:</strong> ${infoTicket.tipo}</p>
+        <p><strong>Chofer:</strong> ${infoTicket.chofer}</p>
+    `;
+
+    // Espera un instante para asegurar que el contenido se ha renderizado
+    setTimeout(() => {
+        contenidoTicket.focus(); // Mueve el foco al contenido del ticket
+    }, 100);
+}
+function cerrarModalTicket() {
+    const modal = document.getElementById('modal-ticket');
+    const contenidoPrincipal = document.getElementById('contenido-principal');
+
+    // Oculta el modal
+    modal.hidden = true;
+
+    // Restaura la visibilidad del contenido principal para lectores
+    contenidoPrincipal.removeAttribute('aria-hidden');
+
+    // Devuelve el foco a un elemento lógico (por ejemplo, el campo de destino)
+    const destinoInput = document.getElementById('destino');
+    if (destinoInput) destinoInput.focus();
+}

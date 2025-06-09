@@ -21,7 +21,7 @@
     <header class="hero" role="banner">
         <div class="overlay">
             <h1>BusTickets Xalapa</h1>
-            <nav role="navigation" aria-label="Menú principal">
+            <nav aria-label="Menú principal">
                 <ul>
                     <li><a href="index.html" aria-current="page">Inicio</a></li>
                     <li><a href="rutas.html">Rutas y Horarios</a></li>
@@ -31,19 +31,19 @@
         </div>
     </header>
 
-    <main id="main-content" role="main">
+    <main id="main" role="main">
         <!-- Sección de bienvenida breve -->
-        <section aria-labelledby="bienvenida-heading" id="bienvenida" aria-live="polite">
+        <section aria-labelledby="bienvenida-heading" id="bienvenida">
             <h2 id="bienvenida-heading">¡Bienvenido a BusTickets Xalapa!</h2>
             <p id="bienvenida-desc" class="sr-only">Sistema de venta de boletos de autobús desde Xalapa</p>
             <p>
                 Tu puerta de entrada a los mejores viajes en autobús desde la bella Xalapa. Con nosotros encontrarás:
             </p>
-            <ul class="lista-bienvenida" role="list">
-                <li role="listitem">La forma más rápida y segura de comprar tus boletos</li>
-                <li role="listitem">Precios competitivos y promociones exclusivas</li>
-                <li role="listitem">La mayor variedad de horarios y rutas</li>
-                <li role="listitem">Atención personalizada antes, durante y después de tu viaje</li>
+            <ul class="lista-bienvenida">
+                <li>La forma más rápida y segura de comprar tus boletos</li>
+                <li>Precios competitivos y promociones exclusivas</li>
+                <li>La mayor variedad de horarios y rutas</li>
+                <li>Atención personalizada antes, durante y después de tu viaje</li>
             </ul>
             <p class="destacado">
                 <strong>¡Comienza tu próxima aventura con nosotros!</strong>
@@ -51,11 +51,11 @@
         </section>
 
         <!-- Sección de destinos destacados -->
-        <section aria-labelledby="destacados-heading" aria-describedby="destacados-desc" aria-live="polite">
+        <section aria-labelledby="destacados-heading" aria-describedby="destacados-desc">
             <h2 id="destacados-heading">Destinos destacados</h2>
             <p id="destacados-desc" class="sr-only">Lista de 3 rutas principales disponibles desde Xalapa</p>
-            <div class="destinos-container" role="list">
-                <article aria-labelledby="destino-veracruz" role="listitem">
+            <div class="destinos-container">
+                <article aria-labelledby="destino-veracruz">
                     <h3 id="destino-veracruz">Xalapa a Veracruz</h3>
                     <p>
                         <strong>Disfruta un viaje cómodo y placentero desde Xalapa al vibrante puerto de Veracruz.</strong><br />
@@ -69,7 +69,7 @@
                     />
                 </article>
 
-                <article aria-labelledby="destino-puebla" role="listitem">
+                <article aria-labelledby="destino-puebla">
                     <h3 id="destino-puebla">Xalapa a Puebla</h3>
                     <p>
                         <strong>Conoce la majestuosa ciudad de Puebla en un viaje cómodo y seguro desde Xalapa.</strong><br />
@@ -82,7 +82,7 @@
                     />
                 </article>
 
-                <article aria-labelledby="destino-mexico" role="listitem">
+                <article aria-labelledby="destino-mexico">
                     <h3 id="destino-mexico">Xalapa a México</h3>
                     <p>
                         <strong>La capital te espera con los brazos abiertos en un viaje cómodo y lleno de posibilidades desde Xalapa.</strong><br />
@@ -98,12 +98,7 @@
         </section>
 
         <!-- Sección sobre nosotros mejorada -->
-        <section
-          aria-labelledby="nosotros-heading"
-          id="nosotros"
-          class="sobre-nosotros"
-          aria-live="polite"
-        >
+        <section aria-labelledby="nosotros-heading" id="nosotros" class="sobre-nosotros">
             <h2 id="nosotros-heading">Sobre Nosotros</h2>
             <p id="nosotros-desc" class="sr-only">Información sobre la empresa BusTickets Xalapa</p>
             <div class="contenedor-nosotros">
@@ -126,102 +121,131 @@
                     />
                 </div>
             </div>
-        </section>
-
+        </section> 
 
         <!-- Sección Nuestros Autobuses -->
-<section aria-labelledby="autobuses-heading" id="autobuses" class="nuestros-autobuses" aria-live="polite">
-    <h2 id="autobuses-heading">Nuestros Autobuses</h2>
-    <p id="autobuses-desc" class="sr-only">Características y comodidades de nuestros autobuses</p>
-    <div class="contenedor-autobuses">
-        <div class="imagen-autobuses">
-            <div class="carrusel-container">
-                <div class="carrusel" role="region" aria-label="Galería de imágenes de autobuses BusTickets">
-                    <div class="slide" aria-hidden="false" aria-label="Gráfico de Autobus">
-                        <img src="https://i0.wp.com/analisisafondo.com/wp-content/uploads/2024/04/SMILE-BUS.jpg?fit=1000%2C606&ssl=1" 
-                             alt="Exterior de un autobús moderno color blanco con franjas rojas y azules, modelo 2024">
-                    </div>
-                    <div class="slide" aria-hidden="true" aria-label="Imagen de ejemplo de autobuces de BusTickets">
-                        <img src="https://i0.wp.com/southeastasiainfra.com/wp-content/uploads/2023/09/Thai-bus.jpeg?fit=696%2C521&ssl=1" 
-                             alt="Vista lateral de varios autobuses de lujo alineados en la terminal">
-                    </div>
-                    <div class="slide" aria-hidden="true" aria-label="Terminal de autobuses de BusTickets">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNG-y6oYQbprQSsJV72CrQObQ9LPFeHUJVW9VKLyOXC0KypRMjBltIo4efNZ8tPHJBXxoP8TBvgqhO15jOHytQcJnqU4sLMculwzK4-wzNAzl6t45xMqXsdljQJK3kec7FKhB3NK5VDMKhgzBEoZdCu8lDBrPt6LJskYIFC9Emjk-0aKkHeGLogu4h6b4/s2048/smile_bus_interiores.png" 
-                             alt="Interior del autobús mostrando pasillo central y asientos reclinables color gris">
-                    </div>
-                    <div class="slide" aria-hidden="true" aria-label="Interior de autobuses,con 44 asientos comodos para viajar">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwJUs35-G7BZ9Vt-3nW9sQkqikFQmrGT3dN-01W-DlHPfJVAacYQX-HinwKCLMVExLPuLadvvINzQ87eHB40Xp6L-EkfPBFmDW5_TY4CTxOINxWXGOPpj1ChacKkE9GB7JVN2dmmJ1gY_XTmC5sl9LyLFkuhOPDwLNdSJlq9UfUu9-9CCmnCiojkO_9Ks/s2048/asientos_delanteros_smile_bus.png" 
-                             alt="Asientos delanteros del autobús con pantallas individuales y reposapiés">
-                    </div>
-                    <div class="slide" aria-hidden="true" aria-label="Interior de autobuses, asientos reclinables y con portapíes para los pasajeros">
-                        <img src="https://unicorn-images.b-cdn.net/286b29b1-48e7-4dfd-ae22-275f5504b974?optimizer=gif" 
-                             alt="Autobús en carretera con paisaje montañoso al fondo">
-                    </div>
-                    <div class="slide" aria-hidden="true" aria-label="Interior de autobuses, pantallas en todos los asientos, con accesibilidad a personas con discapacidad visual">
-                        <img src="https://eldiariony.com/wp-content/uploads/sites/2/2016/04/shutterstock_15999058.jpg?w=1200" 
-                             alt="Servicio de comida a bordo mostrando bandeja con refrigerio y bebida">
+        <section aria-labelledby="autobuses-heading" id="autobuses" class="nuestros-autobuses">
+            <h2 id="autobuses-heading">Nuestros Autobuses</h2>
+            <p id="autobuses-desc" class="sr-only">Características y comodidades de nuestros autobuses</p>
+            <div class="contenedor-autobuses">
+                <div class="imagen-autobuses">
+                    <div class="carrusel-container" aria-live="polite">
+                        <div class="carrusel" role="region" aria-label="Galería de imágenes de autobuses">
+                            <div class="slide" aria-hidden="false" id="slide-1" tabindex="0">
+                                <img src="https://i0.wp.com/analisisafondo.com/wp-content/uploads/2024/04/SMILE-BUS.jpg?fit=1000%2C606&ssl=1" 
+                                     alt="Exterior de un autobús moderno color blanco con franjas rojas y azules, modelo 2024">
+                            </div>
+                            <div class="slide" aria-hidden="true" id="slide-2" tabindex="-1">
+                                <img src="https://i0.wp.com/southeastasiainfra.com/wp-content/uploads/2023/09/Thai-bus.jpeg?fit=696%2C521&ssl=1" 
+                                     alt="Vista lateral de varios autobuses de lujo alineados en la terminal">
+                            </div>
+                            <div class="slide" aria-hidden="true" id="slide-3" tabindex="-1">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNG-y6oYQbprQSsJV72CrQObQ9LPFeHUJVW9VKLyOXC0KypRMjBltIo4efNZ8tPHJBXxoP8TBvgqhO15jOHytQcJnqU4sLMculwzK4-wzNAzl6t45xMqXsdljQJK3kec7FKhB3NK5VDMKhgzBEoZdCu8lDBrPt6LJskYIFC9Emjk-0aKkHeGLogu4h6b4/s2048/smile_bus_interiores.png" 
+                                     alt="Interior del autobús mostrando pasillo central y asientos reclinables color gris">
+                            </div>
+                            <div class="slide" aria-hidden="true" id="slide-4" tabindex="-1">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwJUs35-G7BZ9Vt-3nW9sQkqikFQmrGT3dN-01W-DlHPfJVAacYQX-HinwKCLMVExLPuLadvvINzQ87eHB40Xp6L-EkfPBFmDW5_TY4CTxOINxWXGOPpj1ChacKkE9GB7JVN2dmmJ1gY_XTmC5sl9LyLFkuhOPDwLNdSJlq9UfUu9-9CCmnCiojkO_9Ks/s2048/asientos_delanteros_smile_bus.png" 
+                                     alt="Asientos delanteros del autobús con pantallas individuales y reposapiés">
+                            </div>
+                            <div class="slide" aria-hidden="true" id="slide-5" tabindex="-1">
+                                <img src="https://unicorn-images.b-cdn.net/286b29b1-48e7-4dfd-ae22-275f5504b974?optimizer=gif" 
+                                     alt="Autobús en carretera con paisaje montañoso al fondo">
+                            </div>
+                            <div class="slide" aria-hidden="true" id="slide-6" tabindex="-1">
+                                <img src="https://eldiariony.com/wp-content/uploads/sites/2/2016/04/shutterstock_15999058.jpg?w=1200" 
+                                     alt="Servicio de comida a bordo mostrando bandeja con refrigerio y bebida">
+                            </div>
+                        </div>
+                        <div class="carrusel-indicadores" role="tablist" aria-label="Seleccionar imagen del carrusel">
+                            <button class="carrusel-indicador active" 
+                                    role="tab" 
+                                    aria-label="Imagen 1: Exterior de autobús" 
+                                    aria-selected="true"
+                                    aria-controls="slide-1"
+                                    tabindex="0"></button>
+                            <button class="carrusel-indicador" 
+                                    role="tab" 
+                                    aria-label="Imagen 2: Vista lateral de autobuses" 
+                                    aria-selected="false"
+                                    aria-controls="slide-2"
+                                    tabindex="-1"></button>
+                            <button class="carrusel-indicador" 
+                                    role="tab" 
+                                    aria-label="Imagen 3: Interior del autobús" 
+                                    aria-selected="false"
+                                    aria-controls="slide-3"
+                                    tabindex="-1"></button>
+                            <button class="carrusel-indicador" 
+                                    role="tab" 
+                                    aria-label="Imagen 4: Asientos delanteros" 
+                                    aria-selected="false"
+                                    aria-controls="slide-4"
+                                    tabindex="-1"></button>
+                            <button class="carrusel-indicador" 
+                                    role="tab" 
+                                    aria-label="Imagen 5: Autobús en carretera" 
+                                    aria-selected="false"
+                                    aria-controls="slide-5"
+                                    tabindex="-1"></button>
+                            <button class="carrusel-indicador" 
+                                    role="tab" 
+                                    aria-label="Imagen 6: Servicio de comida" 
+                                    aria-selected="false"
+                                    aria-controls="slide-6"
+                                    tabindex="-1"></button>
+                        </div>
                     </div>
                 </div>
-                <div class="carrusel-indicadores" role="tablist">
-                    <button class="carrusel-indicador active" role="tab" aria-label="Gráfico de Autobus" aria-selected="true"></button>
-                    <button class="carrusel-indicador" role="tab" aria-label="Imagen de ejemplo de autobuces de BusTickets" aria-selected="false"></button>
-                    <button class="carrusel-indicador" role="tab" aria-label="Terminal de autobuses de BusTickets" aria-selected="false"></button>
-                    <button class="carrusel-indicador" role="tab" aria-label="Interior de autobuses,con 44 asientos comodos para viajar" aria-selected="false"></button>
-                    <button class="carrusel-indicador" role="tab" aria-label="Interior de autobuses, asientos reclinables para los pasajeros" aria-selected="false"></button>
-                    <button class="carrusel-indicador" role="tab" aria-label="Interior de autobuses, pantallas en todos los asientos, con accesibilidad a personas con discapacidad visual" aria-selected="false"></button>
-                </div>
-            </div>
-        </div>
-        <div class="texto-autobuses">
-            <ul class="lista-caracteristicas" role="list">
-                <li role="listitem"><i class="fas fa-couch icono-lista" aria-hidden="true"></i> <strong>44 asientos reclinables ergonómicos con reposapiés</strong></li>
-                <li role="listitem"><i class="fas fa-wifi icono-lista" aria-hidden="true"></i> <strong>Wi-Fi gratuito durante todo el viaje</strong></li>
-                <li role="listitem"><i class="fas fa-plug icono-lista" aria-hidden="true"></i> <strong>Conexiones USB en cada asiento</strong></li>
-                <li role="listitem"><i class="fas fa-snowflake icono-lista" aria-hidden="true"></i> <strong>Aire acondicionado con temperatura controlada</strong></li>
-                <li role="listitem"><i class="fas fa-user-tie icono-lista" aria-hidden="true"></i> <strong>Conductores profesionales con amplia experiencia</strong></li>
-                <li role="listitem"><i class="fas fa-utensils icono-lista" aria-hidden="true"></i> <strong>Servicio a bordo con snacks y bebidas</strong></li>
-                <li role="listitem"><i class="fas fa-toilet icono-lista" aria-hidden="true"></i> <strong>Baño higiénico disponible</strong></li>
-                <li role="listitem"><i class="fas fa-suitcase-rolling icono-lista" aria-hidden="true"></i> <strong>Espacio amplion para equipaje</strong></li>
-            </ul>
+                <div class="texto-autobuses">
+                    <ul class="lista-caracteristicas">
+                        <li><i class="fas fa-couch icono-lista" aria-hidden="true"></i> <strong>44 asientos reclinables ergonómicos con reposapiés</strong></li>
+                        <li><i class="fas fa-wifi icono-lista" aria-hidden="true"></i> <strong>Wi-Fi gratuito durante todo el viaje</strong></li>
+                        <li><i class="fas fa-plug icono-lista" aria-hidden="true"></i> <strong>Conexiones USB en cada asiento</strong></li>
+                        <li><i class="fas fa-snowflake icono-lista" aria-hidden="true"></i> <strong>Aire acondicionado con temperatura controlada</strong></li>
+                        <li><i class="fas fa-user-tie icono-lista" aria-hidden="true"></i> <strong>Conductores profesionales con amplia experiencia</strong></li>
+                        <li><i class="fas fa-utensils icono-lista" aria-hidden="true"></i> <strong>Servicio a bordo con snacks y bebidas</strong></li>
+                        <li><i class="fas fa-toilet icono-lista" aria-hidden="true"></i> <strong>Baño higiénico disponible</strong></li>
+                        <li><i class="fas fa-suitcase-rolling icono-lista" aria-hidden="true"></i> <strong>Espacio amplio para equipaje</strong></li>
+                    </ul>
 
-            <button class="btn-ver-mas" aria-expanded="false" aria-controls="informacion-adicional">
-                <span class="sr-only">Mostrar </span>Más detalles<span class="sr-only"> Sobre características de nuestros autobuses</span>
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </button>
-            <div id="informacion-adicional" class="informacion-adicional" aria-live="polite" hidden>
-                <h3>Detalles adicionales de nuestros autobuses</h3>
-                <div class="detalles-grid" role="list">
-                    <div class="detalle-item" role="listitem">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        <h4>Seguridad</h4>
-                        <p>Nuestros autobuses cuentan con sistemas de seguridad avanzados, incluyendo cinturones de seguridad en todos los asientos, airbags y control de estabilidad.</p>
-                    </div>
-                    
-                    <div class="detalle-item" role="listitem">
-                        <i class="fas fa-tv" aria-hidden="true"></i>
-                        <h4>Entretenimiento</h4>
-                        <p>Sistema de entretenimiento individual con pantallas HD, selección de películas, música y programas de TV.</p>
-                    </div>
-                    
-                    <div class="detalle-item" role="listitem">
-                        <i class="fas fa-wheelchair" aria-hidden="true"></i>
-                        <h4>Accesibilidad</h4>
-                        <p>Vehículos adaptados para personas con movilidad reducida, con rampas y espacios designados.</p>
-                    </div>
-                    
-                    <div class="detalle-item" role="listitem">
-                        <i class="fas fa-baby-carriage" aria-hidden="true"></i>
-                        <h4>Comodidades familiares</h4>
-                        <p>Asientos especiales para familias con niños pequeños y espacios para carriolas.</p>
+                    <button class="btn-ver-mas" aria-expanded="false" aria-controls="informacion-adicional">
+                        <span class="sr-only">Mostrar </span>Más detalles<span class="sr-only"> sobre características de nuestros autobuses</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div id="informacion-adicional" class="informacion-adicional" hidden>
+                        <h3>Detalles adicionales de nuestros autobuses</h3>
+                        <div class="detalles-grid">
+                            <div class="detalle-item">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <h4>Seguridad</h4>
+                                <p>Nuestros autobuses cuentan con sistemas de seguridad avanzados, incluyendo cinturones de seguridad en todos los asientos, airbags y control de estabilidad.</p>
+                            </div>
+                            
+                            <div class="detalle-item">
+                                <i class="fas fa-tv" aria-hidden="true"></i>
+                                <h4>Entretenimiento</h4>
+                                <p>Sistema de entretenimiento individual con pantallas HD, selección de películas, música y programas de TV.</p>
+                            </div>
+                            
+                            <div class="detalle-item">
+                                <i class="fas fa-wheelchair" aria-hidden="true"></i>
+                                <h4>Accesibilidad</h4>
+                                <p>Vehículos adaptados para personas con movilidad reducida, con rampas y espacios designados.</p>
+                            </div>
+                            
+                            <div class="detalle-item">
+                                <i class="fas fa-baby-carriage" aria-hidden="true"></i>
+                                <h4>Comodidades familiares</h4>
+                                <p>Asientos especiales para familias con niños pequeños y espacios para carriolas.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
     </main>
 
-    <footer role="contentinfo" aria-label="Información de contacto y redes sociales">
+    <footer aria-label="Información de contacto y redes sociales">
         <div class="contenedor-footer">
             <div class="info-empresa">
                 <p>&copy; 2025 BusTickets Xalapa. Todos los derechos reservados.</p>
