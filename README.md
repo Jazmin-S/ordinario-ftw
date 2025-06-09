@@ -58,8 +58,8 @@ El proyecto está organizado en los siguientes archivos:
 4. **Diseño Responsivo**
 
    * Adaptado a móviles, tablets y pantallas grandes
-   * Uso de CSS Grid y Flexbox
-   * Animaciones y transiciones suaves
+   * Uso de CSS
+   * Animaciones suaves
 
 5. **Accesibilidad Web**
 
@@ -69,12 +69,12 @@ El proyecto está organizado en los siguientes archivos:
 
 ## 🛠️ Tecnologías Utilizadas
 
-* **HTML5** semántico
-* **CSS3** (Grid, Flexbox, Variables, Animaciones)
-* **JavaScript Vanilla (ES6+)**
-* **Fetch API** para cargar datos desde XML
+* **HTML** semántico
+* **CSS** (Animaciones, estilos)
+* **JavaScript**
+* **XML** para cargar datos 
 * **Font Awesome** para iconos
-* **Google Fonts** (Poppins)
+* **Google Fonts** 
 
 ## 🚀 Instalación y Uso
 
@@ -103,11 +103,8 @@ El proyecto está organizado en los siguientes archivos:
 
 ## 🔧 Mejoras Planeadas
 
-* Autenticación de usuarios
 * Sistema de reservas
-* Integración con una API de pagos real
 * Búsqueda avanzada de rutas
-* Sección de promociones y descuentos
 
 
 ## 📘 Conclusión
