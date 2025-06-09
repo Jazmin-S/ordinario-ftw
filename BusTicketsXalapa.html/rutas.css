@@ -318,6 +318,24 @@ input:valid {
     font-family: 'Courier New', monospace;
     color: #000; /* <- Esta línea asegura que el texto sea negro */
 }
+#modal-pago {
+    display: none; /* Oculta el modal inicialmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#modal-pago .modal-contenido {
+    background: white;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+}
 
 /* Media Queries para dispositivos móviles y tablets */
 @media (max-width: 768px) {

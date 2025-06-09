@@ -132,7 +132,102 @@ function configurarFiltroRutas() {
         // Obtiene el valor del campo destino o 'todos' por defecto
         const destino = document.getElementById('destino')?.value || 'todos';
 
-        // Carga rutas filtradas según el destino ingresado
+/* ======================
+    FUNCIÓN PARA MOSTRAR EL MODAL DE PAGO
+====================== */
+function mostrarModalPago() {
+    const modalPago = document.getElementById('modal-pago');
+    const formPago = document.getElementById('formulario-pago');
+    const primerCampo = formPago.querySelector('input, select, button'); // Primer elemento enfocable
+    
+    // Mostrar el modal
+    modalPago.style.display = 'block';
+    
+    // Configurar accesibilidad
+    modalPago.setAttribute('aria-hidden', 'false');
+    document.querySelector('main').setAttribute('aria-hidden', 'true');
+    
+    // Mover el foco al primer campo del formulario
+    setTimeout(() => {
+        primerCampo.focus();
+    }, 100);
+    
+    // Atrapar el foco dentro del modal
+    modalPago.addEventListener('keydown', trapFocus);
+}
+
+/* ======================
+    FUNCIÓN PARA CERRAR EL MODAL DE PAGO
+====================== */
+function cerrarModalPago() {
+    const modalPago = document.getElementById('modal-pago');
+    
+    // Ocultar el modal
+    modalPago.style.display = 'none';
+    
+    // Restaurar accesibilidad
+    modalPago.setAttribute('aria-hidden', 'true');
+    document.querySelector('main').setAttribute('aria-hidden', 'false');
+    
+    // Devolver el foco al botón que abrió el modal
+    const botonComprar = document.activeElement.closest('.btn-comprar');
+    if (botonComprar) {
+        botonComprar.focus();
+    }
+    
+    // Remover el event listener de atrapar foco
+    modalPago.removeEventListener('keydown', trapFocus);
+}
+
+/* ======================
+    FUNCIÓN PARA ATRAPAR EL FOCO DENTRO DEL MODAL
+====================== */
+function trapFocus(e) {
+    const modalPago = document.getElementById('modal-pago');
+    if (modalPago.style.display !== 'block') return;
+    
+    const focusableElements = modalPago.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    
+    if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+        }
+    }
+    
+    if (e.key === 'Escape') {
+        cerrarModalPago();
+    }
+}
+
+/* ======================
+    CONFIGURACIÓN DE EVENTOS PARA EL MODAL
+====================== */
+document.addEventListener('DOMContentLoaded', function() {
+    // Configurar botones de compra
+    document.querySelectorAll('.btn-comprar').forEach(btn => {
+        btn.addEventListener('click', function() {
+            mostrarModalPago();
+        });
+    });
+    
+    // Configurar botón de cerrar
+    document.querySelector('#modal-pago .cerrar-modal').addEventListener('click', cerrarModalPago);
+    
+    // Cerrar al hacer clic fuera del contenido
+    document.getElementById('modal-pago').addEventListener('click', function(e) {
+        if (e.target === this) {
+            cerrarModalPago();
+        }
+    });
+});        // Carga rutas filtradas según el destino ingresado
         cargarRutas(destino);
     });
 }
@@ -202,6 +297,7 @@ function mostrarModalTicket(infoTicket) {
         contenidoTicket.focus(); // Mueve el foco al contenido del ticket
     }, 100);
 }
+
 function cerrarModalTicket() {
     const modal = document.getElementById('modal-ticket');
     const contenidoPrincipal = document.getElementById('contenido-principal');
@@ -216,3 +312,46 @@ function cerrarModalTicket() {
     const destinoInput = document.getElementById('destino');
     if (destinoInput) destinoInput.focus();
 }
+// Esperar a que el DOM esté cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todos los botones "Comprar"
+    const botonesComprar = document.querySelectorAll('.btn-comprar');
+    const modalPago = document.getElementById('modal-pago');
+    const cerrarModal = document.querySelector('#modal-pago .cerrar-modal');
+
+    // Abrir modal al hacer clic en "Comprar"
+    botonesComprar.forEach(boton => {
+        boton.addEventListener('click', function() {
+            // Mostrar el modal
+            modalPago.style.display = 'block';
+
+            // Mover el foco al botón de cerrar (accesibilidad)
+            cerrarModal.focus();
+
+            // Opcional: Rellenar datos del boleto en el modal (ej: destino, precio)
+            const destino = boton.getAttribute('data-destino');
+            const precio = boton.getAttribute('data-precio');
+            // ... (puedes actualizar campos del formulario aquí)
+        });
+    });
+
+    // Cerrar modal al hacer clic en la "X"
+    cerrarModal.addEventListener('click', function() {
+        modalPago.style.display = 'none';
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    modalPago.addEventListener('click', function(e) {
+        if (e.target === modalPago) {
+            modalPago.style.display = 'none';
+        }
+    });
+
+    // Atrapar el foco dentro del modal (accesibilidad)
+    modalPago.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            modalPago.style.display = 'none';
+        }
+
+    });
+});

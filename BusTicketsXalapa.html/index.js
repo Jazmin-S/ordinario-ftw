@@ -139,6 +139,10 @@ function configurarBotonVerMas() {
 
     if (!btnVerMas || !infoAdicional) return;
 
+    // Establecer relación ARIA explícita
+    btnVerMas.setAttribute('aria-controls', 'informacion-adicional');
+    infoAdicional.setAttribute('aria-labelledby', 'informacion-adicional-heading');
+
     btnVerMas.addEventListener('click', () => {
         const estaMostrando = infoAdicional.hasAttribute('hidden');
         
@@ -146,36 +150,57 @@ function configurarBotonVerMas() {
         if (estaMostrando) {
             infoAdicional.removeAttribute('hidden');
             infoAdicional.classList.add('mostrar');
+            
+            // Enfocar el primer elemento del contenido expandido
+            setTimeout(() => {
+                const primerElemento = infoAdicional.querySelector('h3, [tabindex], .detalle-item');
+                if (primerElemento) {
+                    primerElemento.setAttribute('tabindex', '0');
+                    primerElemento.focus();
+                }
+            }, 100);
         } else {
             infoAdicional.setAttribute('hidden', '');
             infoAdicional.classList.remove('mostrar');
+            btnVerMas.focus();
         }
         
         // Actualizar atributos ARIA
         btnVerMas.setAttribute('aria-expanded', (!estaMostrando).toString());
-        
-        // Alternar clase 'activo'
         btnVerMas.classList.toggle('activo');
         
         // Cambiar texto e icono
-        if (!estaMostrando) {
-            btnVerMas.innerHTML = '<i class="fas fa-chevron-up"></i> Ver menos detalles';
-            const primerElemento = infoAdicional.querySelector('h3, .detalle-item');
-            if (primerElemento) {
-                primerElemento.setAttribute('tabindex', '0');
-                primerElemento.focus();
-            }
-        } else {
-            btnVerMas.innerHTML = '<i class="fas fa-chevron-down"></i> Ver más detalles';
-            btnVerMas.focus();
-        }
+        btnVerMas.innerHTML = estaMostrando 
+            ? '<i class="fas fa-chevron-up"></i> Ver menos detalles' 
+            : '<i class="fas fa-chevron-down"></i> Ver más detalles';
     });
 
+    // Manejar eventos de teclado
     btnVerMas.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             btnVerMas.click();
         }
+    });
+}
+
+// Modificar la función del carrusel para mejorar accesibilidad
+function actualizarEstado(indice) {
+    // Actualizar slides
+    slides.forEach((slide, i) => {
+        const estaActivo = i === indice;
+        slide.setAttribute('aria-hidden', !estaActivo);
+        slide.style.transform = `translateX(-${indice * 100}%)`;
+        // Solo el slide activo debe ser enfocable
+        slide.querySelector('img').setAttribute('tabindex', estaActivo ? '0' : '-1');
+    });
+
+    // Actualizar indicadores
+    indicadores.forEach((indicador, i) => {
+        const estaActivo = i === indice;
+        indicador.classList.toggle('active', estaActivo);
+        indicador.setAttribute('aria-selected', estaActivo);
+        indicador.setAttribute('tabindex', estaActivo ? '0' : '-1');
     });
 }
 function configurarHoverDetalles() {
@@ -201,4 +226,59 @@ function configurarHoverDetalles() {
         });
     });
 }
+function activarModoTeclado() {
+  document.body.classList.add('modo-teclado');
+  window.removeEventListener('keydown', onKeyDown);
+  window.addEventListener('mousedown', onMouseDown);
+}
+
+function desactivarModoTeclado() {
+  document.body.classList.remove('modo-teclado');
+  window.removeEventListener('mousedown', onMouseDown);
+  window.addEventListener('keydown', onKeyDown);
+}
+
+function onKeyDown(e) {
+  const teclasNavegacion = ['Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', 'Space', 'Home', 'End', 'PageUp', 'PageDown'];
+  if (teclasNavegacion.includes(e.key)) {
+    activarModoTeclado();
+  }
+}
+
+function onMouseDown() {
+  desactivarModoTeclado();
+}
+
+window.addEventListener('keydown', onKeyDown);
+function detectarModoTeclado() {
+  function activarModoTeclado() {
+    document.body.classList.add('modo-teclado');
+  }
+
+  function desactivarModoTeclado() {
+    document.body.classList.remove('modo-teclado');
+  }
+
+  // Detecta cualquier tecla que pueda mover foco (Tab, flechas, Enter, Espacio, etc)
+  window.addEventListener('keydown', (e) => {
+    const teclasFoco = ['Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' ', 'Escape'];
+    if (teclasFoco.includes(e.key)) {
+      activarModoTeclado();
+    }
+  });
+
+  // Detecta click o toque para desactivar modo teclado
+  window.addEventListener('mousedown', desactivarModoTeclado);
+  window.addEventListener('touchstart', desactivarModoTeclado);
+
+  // Opcional: detecta foco vía teclado (sin tecla) para mayor compatibilidad
+  window.addEventListener('focusin', (e) => {
+    // Solo activa modo teclado si no hay mouse/touch reciente
+    if (!document.body.classList.contains('modo-teclado')) {
+      activarModoTeclado();
+    }
+  });
+}
+
+detectarModoTeclado();
 

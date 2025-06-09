@@ -637,4 +637,16 @@ img {
     outline: 3px solid #0056b3;
     outline-offset: 2px;
 }
+/* Por defecto, nada muestra outline ni sombra */
+:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Solo cuando body tiene clase 'modo-teclado', muestra outline */
+.modo-teclado :focus {
+  outline: 3px solid var(--color-principal);
+  outline-offset: 2px;
+  box-shadow: 0 0 10px var(--color-principal);
+}
 
